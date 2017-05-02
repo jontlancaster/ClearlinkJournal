@@ -1,0 +1,8 @@
+<h1>Journal</h1>
+<div ng-show="authenticated">
+    <p>The identification is {{controller.journal.id}}</p>
+    <p>The content is {{controller.journal.content}}</p>
+</div>
+<div ng-show="!authenticated">
+    <p>Login to see your greeting.</p>
+</div>

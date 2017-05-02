@@ -24,11 +24,20 @@ public class ClearlinkjournalApplication {
 	public Principal user(Principal user) {
 		return user;
 	}
+
 	@RequestMapping("/resource")
 	public Map<String,Object> home() {
 		Map<String,Object> model = new HashMap<>();
 		model.put("id", UUID.randomUUID().toString());
 		model.put("content", "Hello World");
+		return model;
+	}
+
+	@RequestMapping("/journalentry")
+	public Map<String,Object> journal() {
+		Map<String, Object> model = new HashMap<>();
+		model.put("id", "Jon's Journal");
+		model.put("content", "Hello Journal");
 		return model;
 	}
 
@@ -43,7 +52,7 @@ public class ClearlinkjournalApplication {
 		protected void configure(HttpSecurity http) throws Exception {
 			http.formLogin().and().httpBasic()
 					.and().authorizeRequests()
-					.antMatchers("/index.html", "/home.html", "/login.html", "/").permitAll()
+					.antMatchers("/index.html", "/home.html", "/login.html", "/journal.html","/").permitAll()
 					.anyRequest().authenticated().and()
 					.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 		}
